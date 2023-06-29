@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+
+$primary-color: var(--primary-color);
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+*:focus {
+    outline: none;
+    box-shadow: none !important;
+}
+
+.active {
+    color: $primary-color !important;
+}
+
+::ng-deep {
+    .p-focus {
+        box-shadow: none !important;
+    }
+}
