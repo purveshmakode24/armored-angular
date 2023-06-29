@@ -1,16 +1,21 @@
-<form id="login-form">
+<form id="login-form" #userLoginForm="ngForm" (ngSubmit)="onSubmit(userLoginForm)">
     <div class="p-grid p-fluid" style="width: 40%;">
         <h3 class="text-center mt-3">Login</h3>
+        <div class="alert alert-danger m-0" *ngIf="loginErrMsg">
+            {{loginErrMsg}}
+        </div>
         <div class="p-col-12 p-md-4">
             <div class="p-inputgroup mb-3">
                 <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
-                <input type="text" pInputText placeholder="Username">
+                <input type="text" [class.invalid-field]="!usernameRef.valid && usernameRef.touched" pInputText
+                    name="username" ngModel #usernameRef="ngModel" placeholder="Username" required><br />
             </div>
             <div class="p-inputgroup mb-3">
                 <span class="p-inputgroup-addon"><i class="pi pi-lock"></i></span>
-                <input type="text" pInputText placeholder="Password">
+                <input type="text" [class.invalid-field]="!passwordRef.valid && passwordRef.touched" pInputText
+                    name="secrets" ngModel #passwordRef="ngModel" placeholder="Password" required>
             </div>
-            <p-button label="Let's Go"></p-button>
+            <p-button type="submit" label="Let's Go"></p-button>
         </div>
     </div>
 </form>
